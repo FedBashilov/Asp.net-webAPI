@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebAPI.Controllers.Model
+namespace WebApi2.Domain
 {
-	public class Student
+	public class Department
 	{
 		public int Id { get; set; } = 0;
 		public string Name { get; set; } = "";
-		public int Roll { get; set; } = 0;
+		public string Description { get; set; } = "";
 	}
 }

@@ -21,9 +21,7 @@ namespace WebApi2
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllers();
-			var connStr = Configuration.GetConnectionString("MyDBContext");
-			Console.WriteLine(connStr);
-			services.AddDbContext<MyDBContext>(options => options.UseSqlServer(connStr));
+			services.AddDbContext<MyDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MyDBContext")));
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

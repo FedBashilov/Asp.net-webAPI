@@ -1,5 +1,3 @@
-C:\Users\fedba\source\repos\WebApi2\WebApi2\bin\Debug\netcoreapp3.1\appsettings.Development.json
-C:\Users\fedba\source\repos\WebApi2\WebApi2\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\fedba\source\repos\WebApi2\WebApi2\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\fedba\source\repos\WebApi2\WebApi2\bin\Debug\netcoreapp3.1\WebApi2.exe
 C:\Users\fedba\source\repos\WebApi2\WebApi2\obj\Debug\netcoreapp3.1\WebApi2.csprojAssemblyReference.cache
@@ -122,3 +120,5 @@ C:\Users\fedba\source\repos\WebApi2\WebApi2\bin\Debug\netcoreapp3.1\runtimes\win
 C:\Users\fedba\source\repos\WebApi2\WebApi2\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\fedba\source\repos\WebApi2\WebApi2\obj\Debug\netcoreapp3.1\WebApi2.csproj.CoreCompileInputs.cache
 C:\Users\fedba\source\repos\WebApi2\WebApi2\obj\Debug\netcoreapp3.1\WebApi2.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\fedba\source\repos\WebApi2\WebApi2\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\fedba\source\repos\WebApi2\WebApi2\bin\Debug\netcoreapp3.1\appsettings.json
