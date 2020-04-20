@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebApi2.Domain;
 
-namespace WebApi2.WebAPI.Controllers
+namespace WebApi2.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -46,7 +43,14 @@ namespace WebApi2.WebAPI.Controllers
         public IActionResult Save([FromForm] Department oDepartment)
         {
             _context.Departments.Add(oDepartment);
-            _context.SaveChanges();
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbUpdateException e)
+            {
+                return BadRequest("Department with that index already exists");
+            }
 
             var Departments = _context.Departments.OrderBy(s => s.Name).ToList();
 
@@ -92,7 +96,14 @@ namespace WebApi2.WebAPI.Controllers
 
             _context.Departments.Attach(oDepartment);
             _context.Departments.Remove(oDepartment);
-            _context.SaveChanges();
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbUpdateException e)
+            {
+                return BadRequest("Cannot delete department. There are students in it");
+            }
 
             var Departments = _context.Departments.OrderBy(s => s.Name).ToList();
 

@@ -1,9 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using WebAPI.Controllers.Model;
 using WebApi2.Domain;
 
 namespace WebApi2
@@ -20,6 +15,11 @@ namespace WebApi2
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
+		}
+
+		public void MarkAsModified(Student item)
+		{
+			Entry(item).State = EntityState.Modified;
 		}
 	}
 }

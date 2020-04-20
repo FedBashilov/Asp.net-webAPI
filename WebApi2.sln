@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi2", "WebApi2\WebApi2.csproj", "{B376A49F-C2F6-42EE-919C-82A79BF544B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi2", "WebApi2\WebApi2.csproj", "{B376A49F-C2F6-42EE-919C-82A79BF544B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{A78F83EA-3390-49A2-81CD-A304DB84C006}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{B376A49F-C2F6-42EE-919C-82A79BF544B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B376A49F-C2F6-42EE-919C-82A79BF544B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B376A49F-C2F6-42EE-919C-82A79BF544B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A78F83EA-3390-49A2-81CD-A304DB84C006}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A78F83EA-3390-49A2-81CD-A304DB84C006}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A78F83EA-3390-49A2-81CD-A304DB84C006}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A78F83EA-3390-49A2-81CD-A304DB84C006}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

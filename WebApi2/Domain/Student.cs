@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebAPI.Controllers.Model
+namespace WebApi2.Domain
 {
 	public class Student
 	{

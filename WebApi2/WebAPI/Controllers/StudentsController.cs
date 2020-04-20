@@ -1,30 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using WebAPI.Controllers.Model;
-using WebApi2;
+using Microsoft.EntityFrameworkCore;
+using WebApi2.Domain;
 
-namespace WebAPI.Controllers
+namespace WebApi2.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class StudentsController : ControllerBase
     {
         private MyDBContext _context;
+
         public StudentsController(MyDBContext context)
         {
             this._context = context;
         }
 
-
         [HttpGet]
         public IActionResult Gets()
         {
-            var oStudents = _context.Students.OrderBy(s => s.Last_name).ToList();
-  
+            List<Student> oStudents = _context.Students.ToList();
+
             if (oStudents.Count == 0)
             {
                 return NotFound("No list found");
@@ -48,8 +46,15 @@ namespace WebAPI.Controllers
         public IActionResult Save([FromForm] Student oStudent)
         {
             _context.Students.Add(oStudent);
-            _context.SaveChanges();
- 
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbUpdateException e)
+            {
+                return BadRequest("Student with that index already exists");
+            }
+            
             var students = _context.Students.OrderBy(s => s.Last_name).ToList();
 
             if (students.Count == 0)
@@ -59,8 +64,9 @@ namespace WebAPI.Controllers
             return Ok(students);
         }
 
+
         [HttpPut]
-        public IActionResult UpdateStudent([FromForm] Student oStudent)
+        public IActionResult Update([FromForm] Student oStudent)
         {
 
             var oldStudent = _context.Students.SingleOrDefault(x => x.Id == oStudent.Id);
@@ -71,7 +77,14 @@ namespace WebAPI.Controllers
                 _context.Students.Remove(oldStudent);
             }
             _context.Students.Add(oStudent);
-            _context.SaveChanges();
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch(DbUpdateException e)
+            {
+                return BadRequest("Department does not exist");
+            }
 
             var students = _context.Students.OrderBy(s => s.Last_name).ToList();
 
@@ -83,7 +96,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpDelete]
-        public IActionResult DeleteStudent(int id)
+        public IActionResult Delete(int id)
         {
             var oStudent = _context.Students.SingleOrDefault(x => x.Id == id);
 
