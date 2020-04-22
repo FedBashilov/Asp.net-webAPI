@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using WebApi2.Domain;
+﻿using Domain;
+using Microsoft.EntityFrameworkCore;
 
-namespace WebApi2
+namespace DataAccess
 {
 	public class MyDBContext : DbContext
 	{

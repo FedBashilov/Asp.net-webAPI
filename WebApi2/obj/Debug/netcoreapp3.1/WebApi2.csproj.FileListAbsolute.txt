@@ -122,3 +122,7 @@ C:\Users\fedba\source\repos\WebApi2\WebApi2\obj\Debug\netcoreapp3.1\WebApi2.genr
 C:\Users\fedba\source\repos\WebApi2\WebApi2\obj\Debug\netcoreapp3.1\WebApi2.csprojAssemblyReference.cache
 C:\Users\fedba\source\repos\WebApi2\WebApi2\obj\Debug\netcoreapp3.1\WebApi2.csproj.CoreCompileInputs.cache
 C:\Users\fedba\source\repos\WebApi2\WebApi2\obj\Debug\netcoreapp3.1\WebApi2.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\fedba\source\repos\WebApi2\WebApi2\bin\Debug\netcoreapp3.1\DataAccess.dll
+C:\Users\fedba\source\repos\WebApi2\WebApi2\bin\Debug\netcoreapp3.1\Domain.dll
+C:\Users\fedba\source\repos\WebApi2\WebApi2\bin\Debug\netcoreapp3.1\DataAccess.pdb
+C:\Users\fedba\source\repos\WebApi2\WebApi2\bin\Debug\netcoreapp3.1\Domain.pdb

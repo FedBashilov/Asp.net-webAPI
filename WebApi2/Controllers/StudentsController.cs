@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using DataAccess;
+using Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using WebApi2.Domain;
 
 namespace WebApi2.Controllers
 {
@@ -19,7 +19,7 @@ namespace WebApi2.Controllers
         }
 
         [HttpGet]
-        public IActionResult Gets()
+        public IActionResult GetStudents()
         {
             List<Student> oStudents = _context.Students.ToList();
 
@@ -42,8 +42,20 @@ namespace WebApi2.Controllers
             return Ok(oStudent);
         }
 
+        [HttpGet("GetDepartmentStudentsById")]
+        public IActionResult GetDepartmentStudentsById(int id)
+        {
+            List<Student> oStudents = _context.Students.Where(x => x.Department == id).ToList();
+
+            if (oStudents.Count == 0)
+            {
+                return NotFound("No list found");
+            }
+            return Ok(oStudents);
+        }
+
         [HttpPost]
-        public IActionResult Save([FromForm] Student oStudent)
+        public IActionResult Save(Student oStudent)
         {
             _context.Students.Add(oStudent);
             try
@@ -66,7 +78,7 @@ namespace WebApi2.Controllers
 
 
         [HttpPut]
-        public IActionResult Update([FromForm] Student oStudent)
+        public IActionResult Update(Student oStudent)
         {
 
             var oldStudent = _context.Students.SingleOrDefault(x => x.Id == oStudent.Id);
@@ -116,6 +128,32 @@ namespace WebApi2.Controllers
                 return NotFound("No list found.");
             }
             return Ok(students);
+        }
+
+        [HttpDelete("DeleteDepartmentStudentsById")]
+        public IActionResult DeleteDepartmentStudentsById(int id)
+        {
+            List<Student> studentsForDelete = _context.Students.Where(x => x.Department == id).ToList();
+
+            if (studentsForDelete.Count == 0)
+            {
+                return NotFound("No students to delete");
+            }
+
+            studentsForDelete.ForEach((elem) => {
+               _context.Students.Attach(elem);
+               _context.Students.Remove(elem);
+               _context.SaveChanges();
+            });
+
+            List<Student> oStudents = _context.Students.ToList();
+
+            if (oStudents.Count == 0)
+            {
+                return NotFound("No students found");
+            }
+
+            return Ok(oStudents);
         }
     }
 }

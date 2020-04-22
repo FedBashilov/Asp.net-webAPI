@@ -1,7 +1,9 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using DataAccess;
+using Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using WebApi2.Domain;
 
 namespace WebApi2.Controllers
 {
@@ -40,7 +42,7 @@ namespace WebApi2.Controllers
         }
 
         [HttpPost]
-        public IActionResult Save([FromForm] Department oDepartment)
+        public IActionResult Save(Department oDepartment)
         {
             _context.Departments.Add(oDepartment);
             try
@@ -62,7 +64,7 @@ namespace WebApi2.Controllers
         }
 
         [HttpPut]
-        public IActionResult UpdateDepartment([FromForm] Department oDepartment)
+        public IActionResult UpdateDepartment(Department oDepartment)
         {
 
             var oldDepartment = _context.Departments.SingleOrDefault(x => x.Id == oDepartment.Id);
@@ -113,5 +115,31 @@ namespace WebApi2.Controllers
             }
             return Ok(Departments);
         }
+
+        [HttpDelete("DeleteEmptyDepartments")]
+        public IActionResult DeleteEmptyDepartments()
+        {
+            List<Department> oDepartments = _context.Departments.ToList();
+
+            if (oDepartments.Count == 0)
+            {
+                return NotFound("No departments found");
+            }
+
+            oDepartments.ForEach((elem) =>
+            {
+                if (_context.Students.First(x => x.Department == elem.Id) == null)
+                {
+                    _context.Departments.Attach(elem);
+                    _context.Departments.Remove(elem);
+                    _context.SaveChanges();
+                }
+            });
+
+            oDepartments = _context.Departments.ToList();
+
+            return Ok(oDepartments);
+        }
+
     }
 }

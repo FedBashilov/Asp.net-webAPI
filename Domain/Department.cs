@@ -1,4 +1,4 @@
-﻿namespace WebApi2.Domain
+﻿namespace Domain
 {
 	public class Department
 	{
